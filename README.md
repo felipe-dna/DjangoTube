@@ -1,18 +1,27 @@
-# Um clone do YouTube desenvolvido com Django e React 
+<h1 align="center">
+    Um Clone do YouTube construído com Django e React!
+</h1>
 
-Backend
-```json
-cd backend
-virtualenv venv
-pip install -r requirements.txt
-cd src
-python manage.py migrate
-python manage.py runserver
-```
+<h2>Instalação</h2>
 
-Frontend
-```json
-cd frontend
-npm i
-npm start
-```
+<ul>
+    <li>
+        <h3>Backend</h3>
+        ```json
+        $ cd backend
+        $ virtualenv venv
+        $ pip install -r requirements.txt
+        $ cd src
+        $ python manage.py migrate
+        $ python manage.py runserver
+        ```
+    </li>
+    <li>
+        <h3>Frontend</h3>
+        ```json
+        $ cd frontend
+        $ npm i
+        $ npm start
+        ```
+    </li>
+</ul>

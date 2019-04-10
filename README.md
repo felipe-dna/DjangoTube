@@ -16,10 +16,7 @@
         $ python manage.py migrate
         $ python manage.py runserver
         ```        
-      
-      
-      
-    </li>
+</li>
     <li>
         <h3>Frontend</h3>
         
@@ -27,8 +24,6 @@
         $ cd frontend
         $ npm i
         $ npm start
-        ```
-        
-        
-    </li>
+        ``` 
+</li>
 </ul>

@@ -7,6 +7,7 @@
 <ul>
     <li>
         <h3>Backend</h3>
+        
         ```sh
         $ cd backend
         $ virtualenv venv
@@ -14,14 +15,20 @@
         $ cd src
         $ python manage.py migrate
         $ python manage.py runserver
-        ```
+        ```        
+      
+      
+      
     </li>
     <li>
         <h3>Frontend</h3>
+        
         ```sh
         $ cd frontend
         $ npm i
         $ npm start
         ```
+        
+        
     </li>
 </ul>

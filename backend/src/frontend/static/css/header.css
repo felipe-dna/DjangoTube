@@ -1,0 +1,102 @@
+header {
+    width: 100%;
+    height: 56px;
+    padding: 15.5px 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom: 2px solid #F7F7F7;
+}
+
+/* logo        | --------- */
+.logo {
+    width: 10%;
+    height: 24px;
+    padding: 0;
+}
+
+.logo a {
+    color: var(--ocean-1);
+    text-decoration: none;
+}
+
+.logo strong {
+    color: var(--ocean-1);
+    font-size: 20px;
+}
+/* logo        | --------- */
+
+
+/* search form | --------- */
+.search-form {
+    width: 40%;
+    height: 24px;
+}
+
+.sf-form {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.sf-form input {
+    width: 85%;
+    padding: 3px;
+
+    font-size: 16px;
+
+    border: 1px solid;
+    border-color: var(--gray-1);
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+
+
+    overflow: hidden;
+}
+
+.sf-form button {
+    width: 15%;
+
+    background-color: var(--white-1);
+    color: var(--gray-1);
+
+    border-left: none;
+    border-right: 1px solid;
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+    border-color: var(--gray-1);
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+
+    cursor: pointer;
+}
+
+.sf-form button:hover {
+    background-color: var(--white-2);
+}
+/* search form | --------- */
+
+/* profile options | ------ */
+.profile-options {
+    width: 20%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    overflow: hidden;
+}
+
+.profile-item {
+    width: 20%;
+    height: 100%;
+    text-align: center;
+}
+
+.profile-item i {
+    color: var(--gray-1);
+    font-size: 24px;
+}
+/* profile options | ------ */

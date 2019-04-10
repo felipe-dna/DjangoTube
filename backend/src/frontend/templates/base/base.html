@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <!-- font awesome icons -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <!-- css --> 
+    {% block css %}{% endblock css %}
+    <link rel="stylesheet" href="{% static '/css/root.css' %}">
+    <link rel="stylesheet" href="{% static '/css/header.css' %}">
+    <!-- page title -->
+    <title>{% block title %}{% endblock title %}</title>
+</head>
+<body>
+    <!-- header -->
+    {% include './header.html' %}
+
+    <!-- main content -->
+    <section class="main-container">
+        {% block content %}
+        {% endblock content %}
+    </section>
+    <!-- main content -->
+    
+
+</body>
+</html>
+

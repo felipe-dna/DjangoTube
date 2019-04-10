@@ -1,0 +1,53 @@
+{% extends '../base/base.html' %}
+{% load staticfiles %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static '/css/video-list.css' %}">
+{% endblock css %}
+    
+{% block title %}DjangoTube{% endblock title %}
+
+
+{% block content %}
+
+    <div class="videos-list">
+        {% for video in video_list %}
+
+        <div class="video-list-item">
+            <!-- thumbanail -->
+            <div class="video-thumb">
+                <img class="thumb" src="{{ video.thumbnail.url }}" alt="{{ video.name }} thumbanail ">
+            </div>
+
+            <!-- descriptions -->
+            <div class="video-descript">
+                <!-- Title of the video -->
+                <div class="video-title-container">
+                    <strong>
+                        <a href="{% url 'videos:watch' video.id %}" class="video-title">{{ video.name }}</a>
+                    </strong>
+                </div>
+                <!-- Name of the channel -->
+                <div class="channel-name-container">
+                    <a href="#">{{ video.channel.name }}</a>
+                </div>
+                <!-- Views quantity -->
+                <div class="video-views-container">
+                    <p>{{ video.views }} visualizações</p>
+                </div>
+                <!-- Timestamp -->
+                <div class="video-timestamp-container">
+                    <p>{{ video.uploaded_at|timesince }} atrás</p>
+                </div>
+            </div>
+        </div>
+
+
+        {% empty %}
+            <li>Nenhum vídeo upado.</li>
+        {% endfor %}
+    </div>
+
+
+{% endblock content %}
+    

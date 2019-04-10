@@ -1,0 +1,36 @@
+:root {
+    /* Color Theme Swatches in Hex */
+    --ocean-1: #003840;
+    --ocean-2: #005A5B;
+    --ocean-3: #007369;
+    --ocean-4: #008C72;
+    --ocean-5: #02A676;
+
+    /* gray */
+    --gray-1: #515151;
+    --gray-2: #797979;
+    --gray-3: #CCCCCC;
+
+    /* white */
+    --white-1: #FFFFFF;
+    --white-2: #F8F8F8;
+    --white-3: #F0F0F0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+}
+
+html, body {
+    height: 100%;
+    font-family: 'Roboto', sans-serif;
+}
+
+.main-container {
+    width: 100%;
+    height: calc(100% - 56px);
+    padding: 15.5px 50px;
+}

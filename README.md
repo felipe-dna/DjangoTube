@@ -7,7 +7,7 @@
 <ul>
     <li>
         <h3>Backend</h3>
-        ```json
+        ```sh
         $ cd backend
         $ virtualenv venv
         $ pip install -r requirements.txt
@@ -18,7 +18,7 @@
     </li>
     <li>
         <h3>Frontend</h3>
-        ```json
+        ```sh
         $ cd frontend
         $ npm i
         $ npm start

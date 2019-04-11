@@ -9,6 +9,7 @@
 ``` sh
 $ cd backend
 $ virtualenv venv
+$ source venv/bin/activate
 $ pip install -r requirements.txt
 $ cd src
 $ python manage.py migrate

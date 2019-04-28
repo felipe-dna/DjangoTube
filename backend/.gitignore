@@ -1,6 +1,6 @@
-.vscode
-db.sqlite3
-media
+env
+.vscode/
 __pycache__/
-venv/CACHE/
-venv/
+uploads/
+db.sqlite3
+migrations/

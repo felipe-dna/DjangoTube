@@ -1,85 +1,58 @@
 import uuid
+
 from django.db import models
 from django.utils.text import slugify
 
-from imagekit.models import ImageSpecField
-from imagekit.processors import ResizeToFill
+""" retorna o diretório onde o vídeo deve ser salvo """
+def get_video_path(instance, filename):
+    url = "{}/videos/{}/video/{}".format(
+        instance.channel, instance.id, filename
+    )
 
-from apps.channels.models import Channel
+    return url
 
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-def video_path(instance, filename):
-    """ retorna o caminho para salvar o vídeo """
-    # channels/<nome-do-canal>/videos/<id-do-video>/thumbanil/<arquivo> 
-    return "{}/videos/{}/video/{}".format(     
-            instance.channel,
-            instance.id,
-            filename
-        )
 
-def thumb_path(instance, filename):
-    """ retorna o caminho para salvar a thumbnail do video """
-    # channels/<nome-do-canal>/videos/<id-do-video>/thumbanil/<arquivo> 
-    return "{}/videos/{}/thumbanil/{}".format(   
-            instance.channel,
-            instance.id,
-            filename
-        )
+""" retorna o diretório onde a thumb do vídeo deve ser salva  """
+def get_thumb_path(instance, filename):
+    url = "{}/videos/{}/thumbnail/{}".format(
+        instance.channel, instance.id, filename
+    )
 
+    return url
 
 
 class Video(models.Model):
-    id          = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    id          = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False, unique=True)
     slug        = models.SlugField(unique=True, blank=True, null=True)
-    
-    # channel
-    channel     = models.ForeignKey(Channel, on_delete=models.CASCADE)
+    uploaded_at = models.DateTimeField(auto_now_add=True)
 
-    # video details
-    name        = models.CharField(max_length=100, verbose_name="Nome")
-    description = models.TextField(max_length=500, verbose_name="Descrição")
+    # Todo: adicionar a que canal pertence
+    channel     = models.CharField(max_length=100)
 
-    # video file
-    video_file  = models.FileField(upload_to=video_path, verbose_name="Arquivo de vídeo")
+    title       = models.CharField(max_length=100)
+    description = models.TextField(max_length=500)
 
-    # thumbnail
-    video_thumb = models.ImageField(upload_to=thumb_path, verbose_name="Capa do vídeo")
-    thumbnail = ImageSpecField(
-                            source='video_thumb',
-                            processors=[ResizeToFill(300, 200)],
-                            format='JPEG',
-                            options={'quality': 60}
-    )
+    # file
+    video_file = models.FileField(upload_to=get_video_path)
 
-    # video after details
-    likes       = models.IntegerField(default=0)
-    views       = models.IntegerField(default=0)
+    # thumnail
+    thumbnail  = models.ImageField(upload_to=get_thumb_path)
 
-    uploaded_at = models.DateTimeField(auto_now_add=True, verbose_name="Upload feito em")
+    likes      = models.IntegerField(default=0)
+    views      = models.IntegerField(default=0)
 
 
-    # returns an slugfied field
+    # chamado ao salvar uma nova instância
     def save(self, *args, **kwargs):
-        self.slug = slugify(self.name)
-        
-        self.video_file.upload_to = "videos/{}/videos/{}/video/".format(
-            self.channel,
-            self.name
-        )
+        # preenche o campo "slug"
+        self.slug = slugify(self.title)
 
-        self.video_thumb.upload_to = "videos/{}/videos/{}/thumnail/".format(
-            self.channel,
-            self.name
-        )
+        return super(Video, self).save(*args, **kwargs)
 
-        super(Video, self).save(*args, **kwargs)
-
-
+    
+    # retorna o nome do model
     def __str__(self):
-        return '{} upado em {} por {}'.format(
-                                            self.name, 
-                                            self.uploaded_at, 
-                                            self.channel
+        instance_string = "{} upado em {} por {}.".format(
+            self.name, self.uploaded_at, self.channel
         )
 
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 

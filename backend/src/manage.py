@@ -2,10 +2,14 @@
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
+from backend.settings.base import DEBUG
 
+# Ambiente onde o sistema irá rodar.
+enviroment = "development" if DEBUG else "production"
 
 def main():
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'videoUploader.settings')
+    # os.environ.setdefault('DJANGO_SETTINGS_MODULE', )
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'backend.settings.{}'.format(enviroment))
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:

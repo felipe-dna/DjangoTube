@@ -1,6 +1,7 @@
-<h1 align="center">
-    Um Clone do YouTube construído com Django e React!
-</h1>
+<h1 align="center">DjangoTube</h1>
+
+Usei esse projeto para aprender a integrar Django com React quando estava aprendendo as duas tecnologias.
+
 
 <h2>Instalação</h2>
 
